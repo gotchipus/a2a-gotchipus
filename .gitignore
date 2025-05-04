@@ -1,0 +1,52 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Sanic logs
+*.log
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Sanic static & temp cache
+.cache/
+sanic_session/
+sanic_uploads/
+
+# Testing
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Python egg & build artifacts
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Env vars
+.env
+.env.*
+
+# Pylint / linting
+.pylint.d/
+
+# PyInstaller
+*.spec
