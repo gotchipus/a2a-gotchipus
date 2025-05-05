@@ -43,7 +43,7 @@ async def story_agent_endpoint(request):
 async def get_agent_card(request):
     try:
         with open("./.well-known/story-agent.json", "r") as f:
-            return sanic_json(json.loads(f))
+            return sanic_json(json.loads(f.read()))
 
     except FileNotFoundError:
         return sanic_json({"error": "Agent Card not found"}, status=404)
