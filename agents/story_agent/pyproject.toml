@@ -1,0 +1,16 @@
+[project]
+name = "story-agent"
+version = "0.1.0"
+description = "StoryAgent for Gotchipus A2A Protocol"
+dependencies = [
+    "sanic==25.3.0",
+    "aiohttp==3.11.18",
+    "jsonrpcclient==4.0.3",
+    "openai==1.77.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.5",
+    "pytest-asyncio==0.26.0"
+]

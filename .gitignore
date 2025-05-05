@@ -50,3 +50,5 @@ build/
 
 # PyInstaller
 *.spec
+
+.well-known
