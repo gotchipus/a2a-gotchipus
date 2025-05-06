@@ -13,7 +13,7 @@ story = Blueprint("story", url_prefix="story-agent")
 story_task_manager = StoryTaskManager()
 
 
-@story.route("/api/generate", methods=["POST"])
+@story.route("/api/story-agent/generate", methods=["POST"])
 @require_auth
 async def generate_story(request):
     data = request.json
@@ -26,7 +26,7 @@ async def generate_story(request):
     return sanic_json(result)
 
 
-@story.route("a2a/generate", methods=["POST"])
+@story.route("/a2a/story-agent/generate", methods=["POST"])
 @require_auth
 async def story_agent_endpoint(request):
     data = request.json

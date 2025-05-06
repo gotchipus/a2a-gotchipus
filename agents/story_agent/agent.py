@@ -45,7 +45,6 @@ def get_api_key() -> str:
 
 
 class StoryAgent(A2AAgent):
-
     def __init__(self):
         try:
             self.agent = OpenAI(
@@ -58,6 +57,7 @@ class StoryAgent(A2AAgent):
         except Exception as e:
             logger.error(f"Failed to initialize StoryAgent: {e}")
             self.initialized = False
+
 
     async def execute_task(self, task: A2ATask) -> Dict[str, Any]:
         if not self.initialized:
@@ -75,7 +75,7 @@ class StoryAgent(A2AAgent):
         )
 
         # generate gotchi story with Grok
-        SYSTEM_PROMAT = """\
+        SYSTEM_PROMPT = """\
 You are a creative assistant for generating unique background stories and names for Gotchipus NFTs. 
 Each Gotchipus is a bioluminescent octopus-like creature with unique genes (color, glow, pattern). 
 Generate a vivid story set in the Cosmic Reef, incorporating the NFT's gene data, and a fitting name. 
@@ -85,12 +85,12 @@ Example: "
 \"story\": \"In the Cosmic Reef, GOTCHI123...\", \"status\": \"TERMINATE\"}"
 """
         completion = self.agent.chat.completions.create(
-                model="grok-beta",
-                messages=[
-                    {"role": "system", "content": SYSTEM_PROMAT},
-                    {"role": "user", "content": gene_data}
-                ],
-            )
+            model="grok-beta",
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": gene_data}
+            ],
+        )
 
         res = completion.choices[0].message.content
         if res.startswith("```json") and res.endswith("```"):
@@ -142,5 +142,5 @@ Example: "
             }
         
     
-    def get_capabilities(self) -> List[str]:
+    def get_skill(self) -> List[str]:
         return ["generate-story"]

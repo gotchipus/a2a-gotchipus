@@ -10,6 +10,6 @@ class A2AAgent(ABC):
 
 
     @abstractmethod
-    async def get_capabilities(self) -> List[str]:
-        """Return the agent's capabilities"""
+    async def get_skill(self) -> List[str]:
+        """Return the agent's skill"""
         pass
